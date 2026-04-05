@@ -19,9 +19,7 @@ final class MainViewController: UIViewController, UIDocumentPickerDelegate {
     }
     
     private func openPicker() {
-        
-        let types: [UTType] = [.data, .content]
-        
+        let types: [UTType] = [.pdf]
         let picker = UIDocumentPickerViewController(forOpeningContentTypes: types)
         picker.delegate = self
         picker.allowsMultipleSelection = false

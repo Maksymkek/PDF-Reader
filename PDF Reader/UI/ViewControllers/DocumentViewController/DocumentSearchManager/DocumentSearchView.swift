@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class DocumentSearchView : UIView, UISearchBarDelegate {
+final class DocumentSearchView : UIView, UISearchBarDelegate {
     
     private var searchManager: DocumentSearchManager
     
@@ -204,7 +204,7 @@ class DocumentSearchView : UIView, UISearchBarDelegate {
             return
         }
         if totalCount > 0 {
-            counterLabel.text = "\(currentIndex) of \(totalCount)"
+            counterLabel.text = "\(currentIndex + 1) of \(totalCount)"
         }
         else {
             counterLabel.text = "0"

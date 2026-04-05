@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class CurrentPageNumberView: UIVisualEffectView {
+final class CurrentPageNumberView: UIVisualEffectView {
     private let makeLabel: (String?) -> UILabel = { text in
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)

@@ -7,7 +7,7 @@
 
 import PDFKit
 
-class DocumentViewModel {
+final class DocumentViewModel {
 
     let documentURL: URL
     let store: PDFReadingProgressStore

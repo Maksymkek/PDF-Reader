@@ -11,25 +11,44 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
     weak var vc: DocumentViewController?
     weak var searchView: DocumentSearchView?
     private(set) var searchResults: [PDFSelection] = []
+    private let serial = DispatchQueue(
+        label: "Document_search_sq",
+        qos: .userInteractive
+    )
+    private var searchWorkItem: DispatchWorkItem?
+
     private(set) var currentSearchIndex = 0
 
-    func configure(vc: DocumentViewController?, searchView: DocumentSearchView? ) {
+    func configure(vc: DocumentViewController?, searchView: DocumentSearchView?)
+    {
         self.vc = vc
         self.searchView = searchView
     }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        search(searchText)
-        searchView?
-            .updateSearchCounter(
-                currentIndex: currentSearchIndex,
-                totalCount: searchResults
-                    .count,
-                hide: searchText.isEmpty)
+        searchWorkItem?.cancel()
+        let workItem = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            search(searchText)
+            DispatchQueue.main.async {
+                self.searchView?
+                    .updateSearchCounter(
+                        currentIndex: self.currentSearchIndex,
+                        totalCount: self.searchResults
+                            .count,
+                        hide: searchText.isEmpty
+                    )
+            }
+        }
+        searchWorkItem = workItem
+        DispatchQueue
+            .global(qos: .userInteractive)
+            .asyncAfter(deadline: .now() + 0.3, execute: workItem)
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         search(searchBar.text ?? "")
-       
+
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -40,24 +59,39 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
     }
 
     private func search(_ text: String) {
-        guard let document = vc?.pdfView.document, !text.isEmpty else {
+        guard let document = vc?.pdfView.document else {
             return
         }
-        let serial = DispatchQueue(label: "Serial", qos: .userInteractive)
-        serial.async{
-            self.searchResults = document.findString(text, withOptions: .caseInsensitive)
-            
-            self.removeAllHighlights(from: document)
-            for searchResult in self.searchResults {
-                self.highlightSelection(searchResult)
-            }
-            self.currentSearchIndex = 0
-            
-            
+
+        self.searchResults = document.findString(
+            text,
+            withOptions: .caseInsensitive
+        )
+
+        self.removeAllHighlights(from: document)
+
+        for searchResult in self.searchResults {
+            self.highlightSelection(searchResult)
         }
-        guard let firstResult = searchResults.first else { return }
-        vc?.pdfView.setCurrentSelection(firstResult, animate: true)
-        vc?.pdfView.go(to: firstResult)
+        self.currentSearchIndex = 0
+        guard let firstResult = self.searchResults.first else { return }
+        DispatchQueue.main.async {
+            if let pdfView = self.vc?.pdfView {
+                self.goToSearchResult(to: firstResult, in: pdfView)
+            }
+
+        }
+
+    }
+    
+    private func goToSearchResult(to result: PDFSelection, in pdfView: PDFView){
+        guard let viewController = vc else { return }
+        pdfView.setCurrentSelection(result, animate: true)
+        if let page = result.pages.first, page != pdfView.currentPage {
+            DispatchQueue.main.async {
+                viewController.goToSelection(result)
+            }
+        }
     }
 
     func removeAllHighlights(from document: PDFDocument) {
@@ -98,14 +132,18 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
         guard !searchResults.isEmpty else { return }
         currentSearchIndex = (currentSearchIndex + 1) % searchResults.count
         let result = searchResults[currentSearchIndex]
-        vc?.pdfView.setCurrentSelection(result, animate: true)
-        vc?.pdfView.go(to: result)
+       // vc?.pdfView.setCurrentSelection(result, animate: true)
+        //vc?.pdfView.go(to: result)
+        if let pdfView = self.vc?.pdfView {
+            self.goToSearchResult(to: result, in: pdfView)
+        }
         searchView?
             .updateSearchCounter(
                 currentIndex: currentSearchIndex,
                 totalCount: searchResults
-                    .count)
-                
+                    .count
+            )
+
     }
 
     func showPreviousResult() {
@@ -113,13 +151,17 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
         currentSearchIndex =
             (currentSearchIndex - 1 + searchResults.count) % searchResults.count
         let result = searchResults[currentSearchIndex]
-        vc?.pdfView.setCurrentSelection(result, animate: true)
-        vc?.pdfView.go(to: result)
+//        vc?.pdfView.setCurrentSelection(result, animate: true)
+//        vc?.pdfView.go(to: result)
+        if let pdfView = self.vc?.pdfView {
+            self.goToSearchResult(to: result, in: pdfView)
+        }
         searchView?
             .updateSearchCounter(
                 currentIndex: currentSearchIndex,
                 totalCount: searchResults
-                    .count)
+                    .count
+            )
     }
 
     func cancelSearch(_ searchBar: UISearchBar) {
@@ -138,4 +180,3 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
 
     }
 }
-

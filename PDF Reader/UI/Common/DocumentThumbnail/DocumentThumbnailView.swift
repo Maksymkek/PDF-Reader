@@ -7,16 +7,15 @@ import PDFKit
 //
 import UIKit
 
-class DocumentThumbnailView: UIView {
+final class DocumentThumbnailView: UIView {
     private weak var pdfView: PDFView?
 
     private let thumbnailSize = CGSize(width: 60, height: 80)
-    
+
     private var isThumbnailViewHidden = false
-    
+
     private var didApplyInitialVisibility = false
 
-    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,7 +42,7 @@ class DocumentThumbnailView: UIView {
     }()
 
     private let pageNumberView: CurrentPageNumberView = CurrentPageNumberView()
-    
+
     private let backGroundView = UIVisualEffectView()
 
     private lazy var horizontalStackView: UIStackView = {
@@ -122,10 +121,8 @@ class DocumentThumbnailView: UIView {
                 ),
             ]
         )
-        
+
     }
-    
-    
 
     func configure(with pdfView: PDFView) {
         self.pdfView = pdfView
@@ -137,24 +134,23 @@ class DocumentThumbnailView: UIView {
         setupObserver()
         reloadThumbnails()
     }
-    
 
     func reloadThumbnails() {
         collectionView.reloadData()
     }
-    
-    @objc func onPageNumberTap(_ gesture: UITapGestureRecognizer){
+
+    @objc func onPageNumberTap(_ gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
             setHiddenStatus(false, animated: true)
         }
     }
-    
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let interactiveViews: [UIView] = [backGroundView, pageNumberView]
 
         return interactiveViews.contains { view in
-            guard !view.isHidden, view.alpha > 0.01, view.isUserInteractionEnabled
+            guard !view.isHidden, view.alpha > 0.01,
+                view.isUserInteractionEnabled
             else {
                 return false
             }
@@ -163,7 +159,7 @@ class DocumentThumbnailView: UIView {
             return view.point(inside: convertedPoint, with: event)
         }
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         if !didApplyInitialVisibility {
@@ -171,8 +167,6 @@ class DocumentThumbnailView: UIView {
             didApplyInitialVisibility = true
         }
     }
-    
-    
 
 }
 
@@ -224,9 +218,13 @@ extension DocumentThumbnailView: UICollectionViewDataSource,
         guard let page = pdfView?.document?.page(at: indexPath.item) else {
             return
         }
-        pdfView?.go(to: page)
+
         collectionView.reloadData()  // Обновляем рамки выделения
         pageNumberView.updateVisibilityStatus()
+        DispatchQueue.main.async { [weak self] in
+            self?.parentViewController?.goToPage(page)
+        }
+
     }
 }
 
@@ -263,23 +261,27 @@ extension DocumentThumbnailView {
         DispatchQueue.main.async {
             self.pageNumberView
                 .updatePageNumber(currentPage: pageNumber)
+
         }
 
     }
-  
-    
+
     func setHiddenStatus(_ isHidden: Bool, animated: Bool) {
         guard isThumbnailViewHidden != isHidden else { return }
-        
+
         isThumbnailViewHidden = isHidden
         horizontalStackView.layoutIfNeeded()
-        var hiddenOffset : CGFloat = 0
+        var hiddenOffset: CGFloat = 0
         if let rootView = self.window {
-            let absoluteFrame = backGroundView.convert(backGroundView.bounds, to: rootView)
+            let absoluteFrame = backGroundView.convert(
+                backGroundView.bounds,
+                to: rootView
+            )
             hiddenOffset = -absoluteFrame.maxX
         }
-       
-        let transform = isThumbnailViewHidden
+
+        let transform =
+            isThumbnailViewHidden
             ? CGAffineTransform(translationX: hiddenOffset, y: 0)
             : .identity
 
@@ -301,9 +303,17 @@ extension DocumentThumbnailView {
             animations()
         }
     }
-    
-    func togglePageNumberHiddenStatus(){
+
+    func togglePageNumberHiddenStatus() {
         pageNumberView.updateVisibilityStatus()
     }
 
+}
+
+private extension UIView {
+    var parentViewController: DocumentViewController? {
+        sequence(first: next, next: { $0?.next }).first {
+            $0 is DocumentViewController
+        } as? DocumentViewController
+    }
 }

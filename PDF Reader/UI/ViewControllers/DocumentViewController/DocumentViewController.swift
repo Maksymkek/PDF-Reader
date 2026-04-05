@@ -8,7 +8,7 @@
 import PDFKit
 import UIKit
 
-class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
+final class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
 {
     var documentURL: URL?
     let pdfView = PDFView()
@@ -68,7 +68,9 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
                 pdfView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 pdfView.topAnchor
                     .constraint(equalTo: view.topAnchor),
-                pdfView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                pdfView.bottomAnchor.constraint(
+                    equalTo: view.bottomAnchor
+                ),
 
                 customThumbnailView.leadingAnchor.constraint(
                     equalTo: view.leadingAnchor,
@@ -95,10 +97,10 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItems = [makeMenuButton()]
         toolbarItems = [UIBarButtonItem.flexibleSpace(), searchButton]
-
+        
         loadPDF(url: documentViewModel.documentURL)
         customThumbnailView.configure(with: pdfView)
-
+        
     }
     
    
@@ -109,14 +111,13 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         if !didApplyInitialScale {
             applyScaleToFitIfNeeded(force: !didApplyInitialScale)
             let extractedExpr: Int = documentViewModel.loadLastReadPage()
             if let documentPage = pdfView.document?.page(
                 at: extractedExpr
             ) {
-                pdfView.go(to: documentPage)
+                goToPage(documentPage)
             }
         }
     }
@@ -150,6 +151,7 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
             navController.toolbar.layoutIfNeeded()
         }
     }
+    
 
     private func loadPDF(url: URL) {
         let isAccessing = url.startAccessingSecurityScopedResource()
@@ -189,8 +191,6 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
         )
     }
 
-    
-
     private func shareDocument() {
         guard let url = documentURL else { return }
         let activityController = UIActivityViewController(
@@ -206,15 +206,45 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
         guard pdfView.document != nil, pdfView.bounds.width > 0,
             pdfView.bounds.height > 0
         else { return }
-        pdfView.autoScales = true
+        pdfView.autoScales = false
+        pdfView.displayDirection = .vertical
+        pdfView.usePageViewController(false, withViewOptions: nil)
+        pdfView.displaysPageBreaks = false
+        pdfView.displayMode = .singlePageContinuous
         let fitScale = pdfView.scaleFactorForSizeToFit
         guard fitScale > 0 else { return }
-
+        
         pdfView.minScaleFactor = fitScale
         pdfView.maxScaleFactor = max(fitScale * 5, 5.0)
         if force {
             pdfView.scaleFactor = fitScale
             didApplyInitialScale = true
+        }
+    }
+
+    func goToPage(_ page: PDFPage) {
+        let pageBounds = page.bounds(for: .cropBox)
+        let destination = PDFDestination(
+            page: page,
+            at: CGPoint(x: pageBounds.minX, y: pageBounds.maxY)
+        )
+        pdfView.go(to: destination)
+    }
+
+    func goToSelection(_ selection: PDFSelection) {
+        self.pdfView.setCurrentSelection(selection, animate: true)
+       
+        guard let page = selection.pages.first else { return }
+        goToPage( page)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if let scrollView = self.pdfView.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView {
+                var offset = scrollView.contentOffset
+                if page.pageRef?.pageNumber != 1 {
+                    offset.y -= self.view.safeAreaInsets.top
+                    scrollView.setContentOffset(offset, animated: false)
+                }
+            }
         }
     }
 

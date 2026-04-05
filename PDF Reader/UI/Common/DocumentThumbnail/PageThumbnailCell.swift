@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class PageThumbnailCell: UICollectionViewCell {
+final class PageThumbnailCell: UICollectionViewCell {
 
     static let reuseIdentifier = "PageThumbnailCell"
     let imageView: UIImageView = {
