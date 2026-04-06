@@ -19,7 +19,7 @@ final class DocumentThumbnailView: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = thumbnailSize  // Размер миниатюры
+        layout.itemSize = thumbnailSize  
         layout.sectionInset = UIEdgeInsets(
             top: 12,
             left: 12,
@@ -99,7 +99,6 @@ final class DocumentThumbnailView: UIView {
                 horizontalStackView.bottomAnchor.constraint(
                     equalTo: bottomAnchor
                 ),
-
                 backGroundView.heightAnchor.constraint(
                     equalTo: horizontalStackView.heightAnchor
                 ),
@@ -121,7 +120,6 @@ final class DocumentThumbnailView: UIView {
                 ),
             ]
         )
-
     }
 
     func configure(with pdfView: PDFView) {
@@ -194,11 +192,9 @@ extension DocumentThumbnailView: UICollectionViewDataSource,
             return UICollectionViewCell()
         }
 
-        // Генерируем миниатюру. PDFKit сам кэширует эти изображения под капотом.
         let thumbnailSize = CGSize(width: 60, height: 80)
         cell.imageView.image = page.thumbnail(of: thumbnailSize, for: .cropBox)
 
-        // Подсвечиваем текущую страницу рамкой
         if let currentPage = pdfView?.currentPage,
             let currentIndex = pdfView?.document?.index(for: currentPage)
         {
@@ -210,7 +206,6 @@ extension DocumentThumbnailView: UICollectionViewDataSource,
         return cell
     }
 
-    // Переход на страницу при нажатии на миниатюру
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
@@ -219,10 +214,10 @@ extension DocumentThumbnailView: UICollectionViewDataSource,
             return
         }
 
-        collectionView.reloadData()  // Обновляем рамки выделения
+        collectionView.reloadData()
         pageNumberView.updateVisibilityStatus()
         DispatchQueue.main.async { [weak self] in
-            self?.parentViewController?.goToPage(page)
+            self?.parentVC?.goToPage(page)
         }
 
     }
@@ -310,8 +305,8 @@ extension DocumentThumbnailView {
 
 }
 
-private extension UIView {
-    var parentViewController: DocumentViewController? {
+extension UIView {
+    fileprivate var parentVC: DocumentViewController? {
         sequence(first: next, next: { $0?.next }).first {
             $0 is DocumentViewController
         } as? DocumentViewController

@@ -11,12 +11,7 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
     weak var vc: DocumentViewController?
     weak var searchView: DocumentSearchView?
     private(set) var searchResults: [PDFSelection] = []
-    private let serial = DispatchQueue(
-        label: "Document_search_sq",
-        qos: .userInteractive
-    )
     private var searchWorkItem: DispatchWorkItem?
-
     private(set) var currentSearchIndex = 0
 
     func configure(vc: DocumentViewController?, searchView: DocumentSearchView?)
@@ -83,8 +78,9 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
         }
 
     }
-    
-    private func goToSearchResult(to result: PDFSelection, in pdfView: PDFView){
+
+    private func goToSearchResult(to result: PDFSelection, in pdfView: PDFView)
+    {
         guard let viewController = vc else { return }
         pdfView.setCurrentSelection(result, animate: true)
         if let page = result.pages.first, page != pdfView.currentPage {
@@ -132,8 +128,6 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
         guard !searchResults.isEmpty else { return }
         currentSearchIndex = (currentSearchIndex + 1) % searchResults.count
         let result = searchResults[currentSearchIndex]
-       // vc?.pdfView.setCurrentSelection(result, animate: true)
-        //vc?.pdfView.go(to: result)
         if let pdfView = self.vc?.pdfView {
             self.goToSearchResult(to: result, in: pdfView)
         }
@@ -151,8 +145,6 @@ final class DocumentSearchManager: NSObject, UISearchBarDelegate {
         currentSearchIndex =
             (currentSearchIndex - 1 + searchResults.count) % searchResults.count
         let result = searchResults[currentSearchIndex]
-//        vc?.pdfView.setCurrentSelection(result, animate: true)
-//        vc?.pdfView.go(to: result)
         if let pdfView = self.vc?.pdfView {
             self.goToSearchResult(to: result, in: pdfView)
         }

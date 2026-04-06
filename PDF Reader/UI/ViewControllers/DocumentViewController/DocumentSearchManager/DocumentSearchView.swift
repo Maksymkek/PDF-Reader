@@ -6,18 +6,18 @@
 //
 import UIKit
 
-final class DocumentSearchView : UIView, UISearchBarDelegate {
-    
+final class DocumentSearchView: UIView, UISearchBarDelegate {
+
     private var searchManager: DocumentSearchManager
-    
+
     private lazy var counterLabel: UILabel = {
-            let label = UILabel()
-            label.text = ""
-            label.font = .systemFont(ofSize: 14)
-            label.textColor = .secondaryLabel
-            label.sizeToFit()
-            return label
-        }()
+        let label = UILabel()
+        label.text = ""
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .secondaryLabel
+        label.sizeToFit()
+        return label
+    }()
     private var didSetupCounterView = false
 
     private lazy var searchBar: UISearchBar = {
@@ -63,8 +63,8 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
         )
         return button
     }()
-    
-    private lazy var glassContainer : UIVisualEffectView = {
+
+    private lazy var glassContainer: UIVisualEffectView = {
         let glassEffect: UIGlassEffect = UIGlassEffect(style: .regular)
         glassEffect.isInteractive = true
         let glassContainer = UIVisualEffectView(effect: glassEffect)
@@ -88,12 +88,10 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
             bottom: 0,
             trailing: 12
         )
-       // view.isHidden = true
-
         return view
     }()
-     
-    init( vc: DocumentViewController) {
+
+    init(vc: DocumentViewController) {
         self.searchManager = DocumentSearchManager()
         super.init(frame: .zero)
         setupUI()
@@ -103,8 +101,8 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupUI(){
+
+    private func setupUI() {
         setVisibilityStatus(false)
         let stack = UIStackView(
             arrangedSubviews: [
@@ -138,7 +136,7 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
             ),
             searchContainerView.topAnchor.constraint(
                 equalTo: topAnchor,
-           
+
             ),
             stack.topAnchor.constraint(
                 equalTo: glassContainer.contentView.topAnchor
@@ -162,7 +160,7 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
             doneSearchButton.heightAnchor.constraint(equalToConstant: 44),
         ])
     }
-    
+
     private func setupCounterRightViewIfNeeded() {
         guard !didSetupCounterView else { return }
 
@@ -172,10 +170,17 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
         containerView.addSubview(counterLabel)
 
         NSLayoutConstraint.activate([
-            counterLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-            counterLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            counterLabel.leadingAnchor.constraint(
+                equalTo: containerView.leadingAnchor,
+                constant: 8
+            ),
+            counterLabel.trailingAnchor.constraint(
+                equalTo: containerView.trailingAnchor
+            ),
             counterLabel.topAnchor.constraint(equalTo: containerView.topAnchor),
-            counterLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+            counterLabel.bottomAnchor.constraint(
+                equalTo: containerView.bottomAnchor
+            ),
         ])
 
         searchBar.searchTextField.rightView = containerView
@@ -183,49 +188,51 @@ final class DocumentSearchView : UIView, UISearchBarDelegate {
 
         didSetupCounterView = true
     }
-    
+
     override func layoutSubviews() {
-          super.layoutSubviews()
-          setupCounterRightViewIfNeeded()
-      }
-    
+        super.layoutSubviews()
+        setupCounterRightViewIfNeeded()
+    }
+
     @objc func didTapSearch() {
- 
-        setVisibilityStatus(true,setToolbarVisible: false)
+        setVisibilityStatus(true, setToolbarVisible: false)
         searchBar.searchTextField.isEnabled = true
         searchBar.isUserInteractionEnabled = true
         searchBar.becomeFirstResponder()
     }
-    
-    func updateSearchCounter(currentIndex: Int, totalCount: Int, hide: Bool = false) {
-       // setupCounterRightViewIfNeeded()
+
+    func updateSearchCounter(
+        currentIndex: Int,
+        totalCount: Int,
+        hide: Bool = false
+    ) {
         guard !hide else {
             counterLabel.text = ""
             return
         }
         if totalCount > 0 {
             counterLabel.text = "\(currentIndex + 1) of \(totalCount)"
-        }
-        else {
+        } else {
             counterLabel.text = "0"
         }
     }
 
     @objc private func didTapPreviousSearchResult() {
         searchManager.showPreviousResult()
-      
     }
 
     @objc private func didTapNextSearchResult() {
         searchManager.showNextResult()
-        
     }
-    
-    private func setVisibilityStatus(_ visible: Bool, setToolbarVisible: Bool? = nil){
+
+    private func setVisibilityStatus(
+        _ visible: Bool,
+        setToolbarVisible: Bool? = nil
+    ) {
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.searchContainerView.alpha = visible ? 1.0 : 0.0
         } completion: { [weak self] status in
-            if let visible = setToolbarVisible{
+            if let visible = setToolbarVisible {
                 self?.searchManager.vc?.setToolbarVisibility(visible: visible)
             }
         }
