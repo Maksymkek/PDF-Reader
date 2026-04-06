@@ -6,14 +6,14 @@
 //
 import UIKit
 
-class PageThumbnailCell: UICollectionViewCell {
+final class PageThumbnailCell: UICollectionViewCell {
 
     static let reuseIdentifier = "PageThumbnailCell"
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
-        iv.layer.cornerRadius = 12  // Скругляем углы самой страницы
+        iv.layer.cornerRadius = 12  
         iv.backgroundColor = .white
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
@@ -30,8 +30,6 @@ class PageThumbnailCell: UICollectionViewCell {
 
     private func setupUI() {
         contentView.addSubview(imageView)
-
-        // Добавляем легкую тень для красоты
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.2
         layer.shadowOffset = CGSize(width: 0, height: 2)

@@ -1,0 +1,179 @@
+{
+  "" : {
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PDF Reader-primary.dia",
+    "emit-module-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PDF Reader-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PDF Reader-primary-emit-module.dia",
+    "pch" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PDF Reader-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PDF Reader-primary.swiftdeps"
+  },
+  "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/AppDelegate.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppDelegate~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/Data/PdfReadingProgressStore.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PdfReadingProgressStore~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/Domain/DocumentViewModel.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewModel~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/SceneDelegate.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/SceneDelegate~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Common/DocumentThumbnail/CurrentPageNumberView.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/CurrentPageNumberView~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Common/DocumentThumbnail/DocumentThumbnailView.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentThumbnailView~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Common/DocumentThumbnail/PageThumbnailCell.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/PageThumbnailCell~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Navigation/AppCoordinator.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppCoordinator~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Navigation/AppFactory.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/AppFactory~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Navigation/Document Screen/DocumentCoordinator.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentCoordinator~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/Navigation/Document Screen/DocumentFactory.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentFactory~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/ViewControllers/DocumentViewController/DocumentSearchManager/DocumentSearchManager.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchManager~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/ViewControllers/DocumentViewController/DocumentSearchManager/DocumentSearchView.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentSearchView~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/ViewControllers/DocumentViewController/DocumentViewController.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/DocumentViewController~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/UI/ViewControllers/MainViewController.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/MainViewController~partial.swiftmodule"
+  },
+  "/Users/makson/projects/PDF Reader/PDF Reader/ViewController.swift" : {
+    "const-values" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.swiftconstvalues",
+    "dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.d",
+    "diagnostics" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.dia",
+    "index-unit-output-path" : "/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.o",
+    "llvm-bc" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.bc",
+    "object" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.o",
+    "swift-dependencies" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController.swiftdeps",
+    "swiftmodule" : "/Users/makson/projects/PDF Reader/.derivedData/Build/Intermediates.noindex/PDF Reader.build/Debug-iphoneos/PDF Reader.build/Objects-normal/arm64/ViewController~partial.swiftmodule"
+  }
+}
