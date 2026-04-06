@@ -6,9 +6,10 @@
 //
 
 import PDFKit
+import QuickLook
 import UIKit
 
-class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
+final class DocumentViewController: UIViewController, UIGestureRecognizerDelegate, QLPreviewControllerDataSource
 {
     var documentURL: URL?
     let pdfView = PDFView()
@@ -19,6 +20,10 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
     private var didApplyInitialScale = false
     private var searchResults: [PDFSelection] = []
     private var currentSearchIndex = 0
+    private var quickLookController: QLPreviewController?
+    private var quickLookPreviewURL: URL?
+    private var isDisplayingPDF = false
+    private var isAccessingSecurityScopedResource = false
    
     private lazy var searchView: DocumentSearchView = {
         return DocumentSearchView(vc: self)}()
@@ -45,7 +50,10 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    deinit {
+        stopAccessingDocumentResourceIfNeeded()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +69,15 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
 
         setGestures()
         
-  
         NSLayoutConstraint.activate(
             [
                 pdfView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 pdfView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 pdfView.topAnchor
                     .constraint(equalTo: view.topAnchor),
-                pdfView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                pdfView.bottomAnchor.constraint(
+                    equalTo: view.bottomAnchor
+                ),
 
                 customThumbnailView.leadingAnchor.constraint(
                     equalTo: view.leadingAnchor,
@@ -91,32 +100,41 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
             ]
         )
         
-        
         navigationItem.leftBarButtonItem = closeButton
         navigationItem.rightBarButtonItems = [makeMenuButton()]
-        toolbarItems = [UIBarButtonItem.flexibleSpace(), searchButton]
-
-        loadPDF(url: documentViewModel.documentURL)
-        customThumbnailView.configure(with: pdfView)
-
+        beginAccessingDocumentResourceIfNeeded(url: documentViewModel.documentURL)
+        title = documentViewModel.documentURL.lastPathComponent
+        
+        if loadPDF(url: documentViewModel.documentURL) {
+            isDisplayingPDF = true
+            toolbarItems = [UIBarButtonItem.flexibleSpace(), searchButton]
+            customThumbnailView.configure(with: pdfView)
+            customThumbnailView.isHidden = false
+            searchView.isHidden = false
+        } else if setupQuickLookPreview(url: documentViewModel.documentURL) {
+            isDisplayingPDF = false
+            toolbarItems = nil
+            customThumbnailView.isHidden = true
+            searchView.isHidden = true
+        } else {
+            presentUnsupportedDocumentAlert(for: documentViewModel.documentURL)
+        }
+        
     }
     
-   
-
     override func viewDidAppear(_ animated: Bool) {
-        setToolbarVisibility(visible: true)
+        setToolbarVisibility(visible: isDisplayingPDF)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        if !didApplyInitialScale {
+        if isDisplayingPDF, !didApplyInitialScale {
             applyScaleToFitIfNeeded(force: !didApplyInitialScale)
             let extractedExpr: Int = documentViewModel.loadLastReadPage()
             if let documentPage = pdfView.document?.page(
                 at: extractedExpr
             ) {
-                pdfView.go(to: documentPage)
+                goToPage(documentPage)
             }
         }
     }
@@ -150,18 +168,64 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
             navController.toolbar.layoutIfNeeded()
         }
     }
+    
+    private func loadPDF(url: URL) -> Bool {
+        guard let document = PDFDocument(url: url) else {
+            return false
+        }
+        pdfView.document = document
+        return true
+    }
 
-    private func loadPDF(url: URL) {
-        let isAccessing = url.startAccessingSecurityScopedResource()
-        if let document = PDFDocument(url: url) {
-            pdfView.document = document
-            title = url.lastPathComponent
-        } else {
-            print("Can't open PDF")
+    private func setupQuickLookPreview(url: URL) -> Bool {
+        guard QLPreviewController.canPreview(url as NSURL) else {
+            return false
         }
-        if isAccessing {
-            url.stopAccessingSecurityScopedResource()
+        let previewController = QLPreviewController()
+        previewController.dataSource = self
+        previewController.view.translatesAutoresizingMaskIntoConstraints = false
+        addChild(previewController)
+        view.addSubview(previewController.view)
+        NSLayoutConstraint.activate([
+            previewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            previewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            previewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+            previewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        previewController.didMove(toParent: self)
+        quickLookController = previewController
+        quickLookPreviewURL = url
+        return true
+    }
+
+    private func beginAccessingDocumentResourceIfNeeded(url: URL) {
+        guard !isAccessingSecurityScopedResource else {
+            return
         }
+        isAccessingSecurityScopedResource = url.startAccessingSecurityScopedResource()
+    }
+
+    private func stopAccessingDocumentResourceIfNeeded() {
+        guard isAccessingSecurityScopedResource else {
+            return
+        }
+        documentViewModel.documentURL.stopAccessingSecurityScopedResource()
+        isAccessingSecurityScopedResource = false
+    }
+
+    private func presentUnsupportedDocumentAlert(for url: URL) {
+        setToolbarVisibility(visible: false)
+        let alert = UIAlertController(
+            title: "Unsupported file",
+            message: "\(url.lastPathComponent) cannot be previewed on this device.",
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(title: "Close", style: .default) { [weak self] _ in
+                self?.dismissSelf()
+            }
+        )
+        present(alert, animated: true)
     }
 
     @objc func dismissSelf() {
@@ -171,6 +235,7 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
             let pageIndex = document.index(for: currentPage)
             documentViewModel.saveLastReadPage(page: pageIndex)
         }
+        stopAccessingDocumentResourceIfNeeded()
         dismiss(animated: true)
     }
 
@@ -189,8 +254,6 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
         )
     }
 
-    
-
     private func shareDocument() {
         guard let url = documentURL else { return }
         let activityController = UIActivityViewController(
@@ -206,15 +269,45 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
         guard pdfView.document != nil, pdfView.bounds.width > 0,
             pdfView.bounds.height > 0
         else { return }
-        pdfView.autoScales = true
+        pdfView.autoScales = false
+        pdfView.displayDirection = .vertical
+        pdfView.usePageViewController(false, withViewOptions: nil)
+        pdfView.displaysPageBreaks = false
+        pdfView.displayMode = .singlePageContinuous
         let fitScale = pdfView.scaleFactorForSizeToFit
         guard fitScale > 0 else { return }
-
+        
         pdfView.minScaleFactor = fitScale
         pdfView.maxScaleFactor = max(fitScale * 5, 5.0)
         if force {
             pdfView.scaleFactor = fitScale
             didApplyInitialScale = true
+        }
+    }
+
+    func goToPage(_ page: PDFPage) {
+        let pageBounds = page.bounds(for: .cropBox)
+        let destination = PDFDestination(
+            page: page,
+            at: CGPoint(x: pageBounds.minX, y: pageBounds.maxY)
+        )
+        pdfView.go(to: destination)
+    }
+
+    func goToSelection(_ selection: PDFSelection) {
+        self.pdfView.setCurrentSelection(selection, animate: true)
+       
+        guard let page = selection.pages.first else { return }
+        goToPage( page)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if let scrollView = self.pdfView.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView {
+                var offset = scrollView.contentOffset
+                if page.pageRef?.pageNumber != 1 {
+                    offset.y -= self.view.safeAreaInsets.top
+                    scrollView.setContentOffset(offset, animated: false)
+                }
+            }
         }
     }
 
@@ -257,5 +350,13 @@ class DocumentViewController: UIViewController, UIGestureRecognizerDelegate
         default:
             break
         }
+    }
+
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        quickLookPreviewURL == nil ? 0 : 1
+    }
+
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        (quickLookPreviewURL ?? documentViewModel.documentURL) as NSURL
     }
 }

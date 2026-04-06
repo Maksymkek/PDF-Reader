@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate,
 
         let factory = AppFactory()
         let documentBrowser = UIDocumentBrowserViewController(forOpening: [
-            .data
+            .item
         ])
         documentBrowser.title = "Documents"
         documentBrowser.allowsDocumentCreation = false

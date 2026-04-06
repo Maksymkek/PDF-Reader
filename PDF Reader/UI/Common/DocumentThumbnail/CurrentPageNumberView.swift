@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class CurrentPageNumberView: UIVisualEffectView {
+final class CurrentPageNumberView: UIVisualEffectView {
     private let makeLabel: (String?) -> UILabel = { text in
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .body)
@@ -33,13 +33,11 @@ class CurrentPageNumberView: UIVisualEffectView {
     }()
 
     private lazy var stackView: UIStackView = {
-
         let stackView = UIStackView(
             arrangedSubviews: [icon, pageLabel]
         )
         stackView.axis = .horizontal
         stackView.alignment = .top
-        // stackView.distribution = .equalSpacing
         stackView.spacing = 8
         return stackView
     }()
@@ -47,7 +45,6 @@ class CurrentPageNumberView: UIVisualEffectView {
     override init(effect: UIVisualEffect?) {
         super.init(effect: UIGlassEffect(style: .regular))
         setupUI()
-
     }
 
     required init?(coder: NSCoder) {
@@ -76,8 +73,8 @@ class CurrentPageNumberView: UIVisualEffectView {
                 constant: -8
             ),
         ])
-
     }
+    
     override func didMoveToWindow() {
         super.didMoveToWindow()
 
@@ -128,7 +125,6 @@ class CurrentPageNumberView: UIVisualEffectView {
                     )
             }
         )
-
         UIView
             .animate(
                 withDuration: 0.5,
